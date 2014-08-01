@@ -17,6 +17,7 @@
 @property UIPushBehavior *pushBehavior;
 @property UICollisionBehavior *collisionBehavior;
 @property UIDynamicItemBehavior *paddleDynamicBehavior;
+@property UIDynamicItemBehavior *ballDynamicBehavior;
 
 @end
 
@@ -42,6 +43,14 @@
     self.paddleDynamicBehavior.density = 1000;
 
     [self.dynamicAnimator addBehavior:self.paddleDynamicBehavior];
+
+    self.ballDynamicBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.ballView]];
+    self.ballDynamicBehavior.allowsRotation = NO;
+    self.ballDynamicBehavior.elasticity = 1.0;
+    self.ballDynamicBehavior.friction = 0;
+    self.ballDynamicBehavior.resistance = 0;
+    
+    [self.dynamicAnimator addBehavior:self.ballDynamicBehavior];
 
 }
 
