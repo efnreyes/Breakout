@@ -21,6 +21,8 @@
 		F92132D6198AE38C00FF09E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92132B8198AE38C00FF09E2 /* UIKit.framework */; };
 		F92132DE198AE38C00FF09E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F92132DC198AE38C00FF09E2 /* InfoPlist.strings */; };
 		F92132E0198AE38C00FF09E2 /* BreakoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F92132DF198AE38C00FF09E2 /* BreakoutTests.m */; };
+		F92132ED198AF55000FF09E2 /* PaddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F92132EC198AF55000FF09E2 /* PaddleView.m */; };
+		F9F5F670198B4B5A00671F4A /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F5F66F198B4B5A00671F4A /* BallView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		F92132DB198AE38C00FF09E2 /* BreakoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BreakoutTests-Info.plist"; sourceTree = "<group>"; };
 		F92132DD198AE38C00FF09E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F92132DF198AE38C00FF09E2 /* BreakoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BreakoutTests.m; sourceTree = "<group>"; };
+		F92132EB198AF55000FF09E2 /* PaddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddleView.h; sourceTree = "<group>"; };
+		F92132EC198AF55000FF09E2 /* PaddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddleView.m; sourceTree = "<group>"; };
+		F9F5F66E198B4B5A00671F4A /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallView.h; sourceTree = "<group>"; };
+		F9F5F66F198B4B5A00671F4A /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,10 @@
 				F92132CA198AE38C00FF09E2 /* ViewController.m */,
 				F92132CC198AE38C00FF09E2 /* Images.xcassets */,
 				F92132BB198AE38C00FF09E2 /* Supporting Files */,
+				F92132EB198AF55000FF09E2 /* PaddleView.h */,
+				F92132EC198AF55000FF09E2 /* PaddleView.m */,
+				F9F5F66E198B4B5A00671F4A /* BallView.h */,
+				F9F5F66F198B4B5A00671F4A /* BallView.m */,
 			);
 			path = Breakout;
 			sourceTree = "<group>";
@@ -249,7 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F92132ED198AF55000FF09E2 /* PaddleView.m in Sources */,
 				F92132CB198AE38C00FF09E2 /* ViewController.m in Sources */,
+				F9F5F670198B4B5A00671F4A /* BallView.m in Sources */,
 				F92132C5198AE38C00FF09E2 /* AppDelegate.m in Sources */,
 				F92132C1198AE38C00FF09E2 /* main.m in Sources */,
 			);
@@ -376,6 +388,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Breakout/Breakout-Prefix.pch";
 				INFOPLIST_FILE = "Breakout/Breakout-Info.plist";
@@ -389,6 +405,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Breakout/Breakout-Prefix.pch";
 				INFOPLIST_FILE = "Breakout/Breakout-Info.plist";
@@ -456,6 +476,7 @@
 				F92132E5198AE38D00FF09E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F92132E6198AE38D00FF09E2 /* Build configuration list for PBXNativeTarget "BreakoutTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +485,7 @@
 				F92132E8198AE38D00FF09E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

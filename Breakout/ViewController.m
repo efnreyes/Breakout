@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "PaddleView.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet PaddleView *paddleView;
+@property (strong, nonatomic) IBOutlet BallView *ballView;
 
 @end
 
@@ -20,10 +23,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)dragPaddle:(UIPanGestureRecognizer *)panGestureRecognizer {
+    self.paddleView.center = CGPointMake([panGestureRecognizer locationInView:self.view].x, self.paddleView.center.y);
+
 }
 
 @end
