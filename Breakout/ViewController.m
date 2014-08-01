@@ -10,11 +10,13 @@
 #import "PaddleView.h"
 #import "BallView.h"
 
-@interface ViewController ()
+@interface ViewController () <UICollisionBehaviorDelegate>
 @property (strong, nonatomic) IBOutlet PaddleView *paddleView;
 @property (strong, nonatomic) IBOutlet BallView *ballView;
 @property UIDynamicAnimator *dynamicAnimator;
 @property UIPushBehavior *pushBehavior;
+@property UICollisionBehavior *collisionBehavior;
+@property UIDynamicItemBehavior *paddleDynamicBehavior;
 
 @end
 
@@ -27,6 +29,20 @@
     self.pushBehavior = [[UIPushBehavior alloc] initWithItems:@[self.ballView] mode:UIPushBehaviorModeInstantaneous];
 
     [self.dynamicAnimator addBehavior:self.pushBehavior];
+
+    self.collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[self.ballView, self.paddleView]];
+    self.collisionBehavior.collisionDelegate = self;
+    self.collisionBehavior.collisionMode = UICollisionBehaviorModeEverything;
+    self.collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+
+    [self.dynamicAnimator addBehavior:self.collisionBehavior];
+
+    self.paddleDynamicBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.paddleView]];
+    self.paddleDynamicBehavior.allowsRotation = NO;
+    self.paddleDynamicBehavior.density = 1000;
+
+    [self.dynamicAnimator addBehavior:self.paddleDynamicBehavior];
+
 }
 
 - (IBAction)dragPaddle:(UIPanGestureRecognizer *)panGestureRecognizer {
