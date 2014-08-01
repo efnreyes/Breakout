@@ -54,6 +54,13 @@
 
 }
 
+#pragma mark UICollisionBehaviorDelegate methods
+
+-(void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
+    NSLog(@"Collided");
+}
+
+#pragma mark Actions
 - (IBAction)dragPaddle:(UIPanGestureRecognizer *)panGestureRecognizer {
     self.paddleView.center = CGPointMake([panGestureRecognizer locationInView:self.view].x, self.paddleView.center.y);
     [self.dynamicAnimator updateItemUsingCurrentState:self.paddleView];
