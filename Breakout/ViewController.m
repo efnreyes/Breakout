@@ -12,6 +12,7 @@
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet PaddleView *paddleView;
 @property (strong, nonatomic) IBOutlet BallView *ballView;
+@property UIDynamicAnimator *dynamicAnimator;
 
 @end
 
@@ -20,12 +21,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 }
 
 - (IBAction)dragPaddle:(UIPanGestureRecognizer *)panGestureRecognizer {
     self.paddleView.center = CGPointMake([panGestureRecognizer locationInView:self.view].x, self.paddleView.center.y);
-
+    [self.dynamicAnimator updateItemUsingCurrentState:self.paddleView];
 }
 
 @end
