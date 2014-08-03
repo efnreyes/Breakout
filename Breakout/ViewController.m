@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "PaddleView.h"
 #import "BallView.h"
+#import "BlockView.h"
 
 @interface ViewController () <UICollisionBehaviorDelegate>
 @property (strong, nonatomic) IBOutlet PaddleView *paddleView;
@@ -27,7 +28,11 @@
 {
     [super viewDidLoad];
 	self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+
     self.pushBehavior = [[UIPushBehavior alloc] initWithItems:@[self.ballView] mode:UIPushBehaviorModeInstantaneous];
+    self.pushBehavior.pushDirection = CGVectorMake(0.5, -1.0);
+    self.pushBehavior.active = YES;
+    self.pushBehavior.magnitude = 0.04;
 
     [self.dynamicAnimator addBehavior:self.pushBehavior];
 
@@ -52,12 +57,23 @@
     
     [self.dynamicAnimator addBehavior:self.ballDynamicBehavior];
 
+//  Adding boundarie to collision behavior
+    [self.collisionBehavior addBoundaryWithIdentifier:@"bottomLine" fromPoint:CGPointMake(0.0f, [self.view frame].size.height) toPoint:CGPointMake([self.view frame].size.width, [self.view frame].size.height)];
+
 }
 
 #pragma mark UICollisionBehaviorDelegate methods
 
 -(void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
-    NSLog(@"Collided");
+    if ([@"bottomLine" isEqualToString:(NSString*)identifier]) {
+//      Touch the bottom of the screen, relocating ball at the center of the screen
+        self.ballView.center = CGPointMake(self.view.center.x, self.view.center.y);
+        [self.dynamicAnimator updateItemUsingCurrentState:self.ballView];
+    }
+}
+
+-(void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item1 withItem:(id<UIDynamicItem>)item2 atPoint:(CGPoint)p {
+    NSLog(@"Collided ball and paddle");
 }
 
 #pragma mark Actions

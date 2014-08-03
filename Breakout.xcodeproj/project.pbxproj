@@ -23,6 +23,7 @@
 		F92132E0198AE38C00FF09E2 /* BreakoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F92132DF198AE38C00FF09E2 /* BreakoutTests.m */; };
 		F92132ED198AF55000FF09E2 /* PaddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F92132EC198AF55000FF09E2 /* PaddleView.m */; };
 		F9F5F670198B4B5A00671F4A /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F5F66F198B4B5A00671F4A /* BallView.m */; };
+		F9F5F673198EC7FA00671F4A /* BlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F5F672198EC7FA00671F4A /* BlockView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		F92132EC198AF55000FF09E2 /* PaddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddleView.m; sourceTree = "<group>"; };
 		F9F5F66E198B4B5A00671F4A /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallView.h; sourceTree = "<group>"; };
 		F9F5F66F198B4B5A00671F4A /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallView.m; sourceTree = "<group>"; };
+		F9F5F671198EC7FA00671F4A /* BlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockView.h; sourceTree = "<group>"; };
+		F9F5F672198EC7FA00671F4A /* BlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				F92132EC198AF55000FF09E2 /* PaddleView.m */,
 				F9F5F66E198B4B5A00671F4A /* BallView.h */,
 				F9F5F66F198B4B5A00671F4A /* BallView.m */,
+				F9F5F671198EC7FA00671F4A /* BlockView.h */,
+				F9F5F672198EC7FA00671F4A /* BlockView.m */,
 			);
 			path = Breakout;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F5F673198EC7FA00671F4A /* BlockView.m in Sources */,
 				F92132ED198AF55000FF09E2 /* PaddleView.m in Sources */,
 				F92132CB198AE38C00FF09E2 /* ViewController.m in Sources */,
 				F9F5F670198B4B5A00671F4A /* BallView.m in Sources */,
