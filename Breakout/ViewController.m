@@ -64,26 +64,31 @@
 
     [self setUpBoard];
 
+}
+
+-(void)setUpBoard {
+    BlockView *block;
+    int xDelta = 5;
+    int yDelta = 15;
+    self.blocks = [[NSMutableArray alloc] init];
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 10; j++) {
+            block = [[BlockView alloc] initWithFrame:CGRectMake(xDelta, yDelta, 30, 14)];
+            [block setBackgroundColor:[UIColor redColor]];
+            [self.view addSubview:block];
+            [self.blocks addObject:block];
+            [self.collisionBehavior addItem:block];
+            xDelta += 31;
+        }
+        xDelta = 5;
+        yDelta += 30;
+    }
     self.blockDynamicBehavior = [[UIDynamicItemBehavior alloc] initWithItems:self.blocks];
     self.blockDynamicBehavior.allowsRotation = NO;
     self.blockDynamicBehavior.density = 1000;
 
     [self.dynamicAnimator addBehavior:self.blockDynamicBehavior];
-}
-
--(void)setUpBoard {
-    BlockView *block;
-    int xDelta = 0;
-    self.blocks = [[NSMutableArray alloc] init];
-
-    for (int i = 0; i < 5; i++) {
-        block = [[BlockView alloc] initWithFrame:CGRectMake(xDelta, 50, 14, 14)];
-        [block setBackgroundColor:[UIColor redColor]];
-        [self.view addSubview:block];
-        [self.blocks addObject:block];
-        [self.collisionBehavior addItem:block];
-        xDelta += 15;
-    }
 }
 
 #pragma mark UICollisionBehaviorDelegate methods
@@ -98,15 +103,28 @@
 
 -(void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item1 withItem:(id<UIDynamicItem>)item2 atPoint:(CGPoint)p {
     BlockView *bv;
-    NSLog(@"blockDynamicBehavior %d", [self.blockDynamicBehavior.items count]);
-    NSLog(@"collisionBehavior %d", [self.collisionBehavior.items count]);
     if ([item2 isKindOfClass:[BlockView class]]) {
-        NSLog(@"Hit the block");
         bv = (BlockView *) item2;
         [self.blockDynamicBehavior removeItem:item2];
         [self.collisionBehavior removeItem:item2];
         [bv removeFromSuperview];
+
+        if ([self shouldStartAgain]) {
+            self.ballView.center = CGPointMake(self.view.center.x, self.view.center.y);
+            [self.dynamicAnimator updateItemUsingCurrentState:self.ballView];
+            
+            [self setUpBoard];
+        }
     }
+}
+
+-(BOOL)shouldStartAgain {
+    BOOL startAgain = NO;
+    if (self.blockDynamicBehavior.items.count == 0) {
+        startAgain = YES;
+
+    }
+    return startAgain;
 }
 
 #pragma mark Actions
