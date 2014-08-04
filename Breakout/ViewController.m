@@ -107,7 +107,16 @@
         bv = (BlockView *) item2;
         [self.blockDynamicBehavior removeItem:item2];
         [self.collisionBehavior removeItem:item2];
-        [bv removeFromSuperview];
+
+//        [BlockView beginAnimations:nil context:nil];
+//        [BlockView setAnimationDuration:1.0];
+//        [BlockView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:[self view] cache:NO];
+        [UIView animateWithDuration:0.4
+                         animations:^{bv.alpha = 0.0;}
+                         completion:^(BOOL finished){ [bv removeFromSuperview]; }
+         ];
+
+        [BlockView commitAnimations];
 
         if ([self shouldStartAgain]) {
             self.ballView.center = CGPointMake(self.view.center.x, self.view.center.y);
