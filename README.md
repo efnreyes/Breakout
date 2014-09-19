@@ -1,3 +1,9 @@
+Animations & Dynamic Behaviors
+==============================
+
+iOS wouldn't be as awesome as it is without animations and dynamic movement. A dynamic animator provides physics-related capabilities and animations for its dynamic items, and provides the context for those animations. It does this by intermediating between the underlying iOS physics engine and dynamic items, via behavior objects you add to the animator.
+
+
 Breakout
 ========
 
@@ -69,3 +75,40 @@ As a user, I want to play again
     Every time a block is cleared, the method (BOOL)shouldStartAgain should get called
     If all the blocks have been cleared, shouldStartAgain should return true
     Repopulate the board with the blocks *: you can either refactor your project to place blocks programmatically (if you don't already) or store the blocks in an array as you remove from the board to add them back in from the array later.
+
+
+Stretches
+=========
+
+
+As a user, I want to see some fun things happen when I clear a block
+2 points
+
+    Animate the block when clearing it from the board
+    Either animate it’s alpha or it’s alpha and color… or do something even cooler!
+
+
+
+As a user, I want to have more of a challenge when I play
+3 points
+
+    Make some blocks take multiple hits before being destroyed
+    Change the color of a block when it’s hit but not destroyed
+
+
+
+As a user, I want to see my score
+3 points
+
+    Figure out an algorithm to keep score
+    This can take into account how many balls have falling off the bottom of the screen, how long it took to clear the board, etc.
+    Add a UIAlertView to decide to play again
+
+
+
+As a user, I want to play against someone else
+3 points
+
+    Keep score for two-players over a few turns
+    Alert the winner when all of the turns are completed
+
